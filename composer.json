@@ -1,0 +1,43 @@
+{
+    "name": "jasondmoss/type-creator",
+    "description": "Custom classes for the creation of custom post types and taxonomies in WordPress.",
+    "version": "1.0.0",
+    "type": "library",
+    "keywords": [
+        "custom post types",
+        "custom taxonomies",
+        "wordpress"
+    ],
+    "homepage": "https://github.com/jasondmoss/type-creator",
+    "license": "GPLv3",
+    "authors": [
+        {
+            "name": "Jason D. Moss",
+            "email": "jason@jdmlabs.com",
+            "homepage": "http://www.jdmlabs.com/",
+            "role": "Developer"
+        }
+    ],
+    "support": {
+        "email": "jason.moss@verbinteractive.com",
+        "issues": "https://github.com/jasondmoss/type-creator/issues",
+        "wiki": "https://github.com/jasondmoss/type-creator/wiki",
+        "source": "https://github.com/jasondmoss/type-creator"
+    },
+
+    "require": {
+        "php": ">=5.3.0"
+    },
+
+    "require-dev": {
+        "mockery/mockery": "0.9.*"
+    },
+
+    "autoload": {
+        "psr-4": {
+            "TypeCreator": "src/"
+        }
+    },
+
+    "minimum-stability": "dev"
+}

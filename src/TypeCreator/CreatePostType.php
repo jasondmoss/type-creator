@@ -17,7 +17,13 @@ namespace TypeCreator;
  */
 
 
-class CreatePostType extends \TypeCreator\Creator
+use \TypeCreator\Creator;
+
+/**
+ * \TypeCreator\CreatePostType
+ *
+ */
+class CreatePostType extends Creator
 {
 
     /**

@@ -17,7 +17,13 @@ namespace TypeCreator;
  */
 
 
-class CreateTaxonomy extends \TypeCreator\Creator
+use \TypeCreator\Creator;
+
+/**
+ * \TypeCreator\CreateTaxonomy
+ *
+ */
+class CreateTaxonomy extends Creator
 {
 
     /**
