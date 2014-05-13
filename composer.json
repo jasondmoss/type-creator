@@ -34,8 +34,8 @@
     },
 
     "autoload": {
-        "psr-4": {
-            "\\TypeCreator\\": "src/TypeCreator"
+        "psr-0": {
+            "TypeCreator": "src"
         }
     },
 
