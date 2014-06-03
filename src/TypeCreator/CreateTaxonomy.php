@@ -18,6 +18,8 @@ namespace TypeCreator;
 
 
 use \TypeCreator\Creator;
+use \TypeCreator\Helper;
+use \Illuminate\Support\Str;
 
 /**
  * \TypeCreator\CreateTaxonomy
@@ -36,16 +38,16 @@ class CreateTaxonomy extends Creator
      * @return void
      * @access public
      */
-    public function __construct($postType, $taxonomyNames, $options = array())
+    public function __construct($postType, $taxonomyNames, $options = [])
     {
         $this->postTypeName = $postType;
         $this->options = $options;
 
-        $names = array(
+        $names = [
             'singular',
             'plural',
             'slug'
-        );
+        ];
 
         if (is_array($taxonomyNames)) {
             $this->taxonomyName = $taxonomyNames['taxonomy_name'];
@@ -57,24 +59,24 @@ class CreateTaxonomy extends Creator
                 } else {
 
                     // Define the method to be used.
-                    $method = 'get'.ucfirst($name);
+                    $method = 'get'. ucfirst($name);
                     $this->{$name} = $method("'{$this->taxonomyName}'");
                 }
             }
         } else {
             $this->taxonomyName = $taxonomyNames;
 
-            $this->plural = getPlural($this->postTypeName, $this->taxonomyName);
-            $this->singular = getSingular($this->postTypeName, $this->taxonomyName);
-            $this->slug = getSlug($this->postTypeName, $this->taxonomyName);
+            $this->plural = Str::plural($this->postTypeName, $this->taxonomyName);
+            $this->singular = Str::singular($this->postTypeName, $this->taxonomyName);
+            $this->slug = Str::slug($this->postTypeName, $this->taxonomyName);
         }
 
         $this->taxonomies[] = $this->taxonomyName;
 
-        add_action('init', array($this, 'registerTaxonomy'));
-        add_filter("manage_edit-{$this->postTypeName}_columns", array($this, 'addAdminColumns'));
-        add_action("manage_{$this->postTypeName}_posts_custom_column", array($this, 'populateAdminColumns'), 10, 2);
-        add_action('restrict_manage_posts', array($this, 'addTaxonomyFilters'));
+        add_action('init', [$this, 'registerTaxonomy']);
+        add_filter("manage_edit-{$this->postTypeName}_columns", [$this, 'addAdminColumns']);
+        add_action("manage_{$this->postTypeName}_posts_custom_column", [$this, 'populateAdminColumns'], 10, 2);
+        add_action('restrict_manage_posts', [$this, 'addTaxonomyFilters']);
     }
 
 
@@ -96,26 +98,30 @@ class CreateTaxonomy extends Creator
         $slug = $this->slug;
 
         // Default options.
-        $defaults = array(
-            'labels' => array(
-                'name'                       => _(__("{$plural}", TXTDMN)),
-                'singular_name'              => _(__("{$singular}", TXTDMN)),
-                'menu_name'                  => __("{$plural}", TXTDMN),
-                'all_items'                  => __("All {$plural}", TXTDMN),
-                'edit_item'                  => __("Edit {$singular}", TXTDMN),
-                'view_item'                  => __("View {$singular}", TXTDMN),
-                'update_item'                => __("Update {$singular}", TXTDMN),
-                'add_new_item'               => __("Add New {$singular}", TXTDMN),
-                'new_item_name'              => __("New {$singular} Name", TXTDMN),
-                'parent_item'                => __("Parent {$plural}", TXTDMN),
-                'parent_item_colon'          => __("Parent {$plural}:", TXTDMN),
-                'search_items'               => __("Search {$plural}", TXTDMN),
-                'popular_items'              => __("Popular {$plural}", TXTDMN),
-                'separate_items_with_commas' => __("Seperate {$plural} with commas", TXTDMN),
-                'add_or_remove_items'        => __("Add or remove {$plural}", TXTDMN),
-                'choose_from_most_used'      => __("Choose from most used {$plural}", TXTDMN),
-                'not_found'                  => __("No {$plural} found", TXTDMN),
-            ),
+        $defaults = [
+
+            'labels' => [
+
+                'name'                       => _(__("{$plural}", 'type-creator')),
+                'singular_name'              => _(__("{$singular}", 'type-creator')),
+                'menu_name'                  => __("{$plural}", 'type-creator'),
+                'all_items'                  => __("All {$plural}", 'type-creator'),
+                'edit_item'                  => __("Edit {$singular}", 'type-creator'),
+                'view_item'                  => __("View {$singular}", 'type-creator'),
+                'update_item'                => __("Update {$singular}", 'type-creator'),
+                'add_new_item'               => __("Add New {$singular}", 'type-creator'),
+                'new_item_name'              => __("New {$singular} Name", 'type-creator'),
+                'parent_item'                => __("Parent {$plural}", 'type-creator'),
+                'parent_item_colon'          => __("Parent {$plural}:", 'type-creator'),
+                'search_items'               => __("Search {$plural}", 'type-creator'),
+                'popular_items'              => __("Popular {$plural}", 'type-creator'),
+                'separate_items_with_commas' => __("Seperate {$plural} with commas", 'type-creator'),
+                'add_or_remove_items'        => __("Add or remove {$plural}", 'type-creator'),
+                'choose_from_most_used'      => __("Choose from most used {$plural}", 'type-creator'),
+                'not_found'                  => __("No {$plural} found", 'type-creator'),
+
+            ],
+
             'public'            => true,
             'show_ui'           => true,
             'show_in_nav_menus' => true,
@@ -123,16 +129,20 @@ class CreateTaxonomy extends Creator
             'show_admin_column' => true,
             'hierarchical'      => true,
             'query_var'         => true,
-            'rewrite'           => array(
+
+            'rewrite'           => [
+
                 'slug'         => $slug,
                 'with_front'   => true,
                 'hierarchical' => true
-            ),
+
+            ],
+
             '_builtin'          => false
-        );
+        ];
 
         // Merge defined custom options with the default options.
-        $options = optionsMerge($defaults, $this->options);
+        $options = Helper::optionsMerge($defaults, $this->options);
 
         // Register the taxonomy if it does not yet exist.
         if (! taxonomy_exists($txName)) {

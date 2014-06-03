@@ -18,6 +18,8 @@ namespace TypeCreator;
 
 
 use \TypeCreator\Creator;
+use \TypeCreator\Helper;
+use \Illuminate\Support\Str;
 
 /**
  * \TypeCreator\CreatePostType
@@ -35,16 +37,16 @@ class CreatePostType extends Creator
      * @return void
      * @access public
      */
-    public function __construct($typeNames, $options = array())
+    public function __construct($typeNames, $options = [])
     {
         $this->options = $options;
 
         if (is_array($typeNames)) {
-            $names = array(
+            $names = [
                 'singular',
                 'plural',
                 'slug'
-            );
+            ];
 
             $this->postTypeName = $typeNames['post_type_name'];
 
@@ -61,13 +63,13 @@ class CreatePostType extends Creator
             }
         } else {
             $this->postTypeName = $typeNames;
-            $this->plural = getPlural($this->postTypeName);
-            $this->singular = getSingular($this->postTypeName);
-            $this->slug = getSlug($this->postTypeName);
+            $this->plural = Str::plural($this->postTypeName);
+            $this->singular = Str::singular($this->postTypeName);
+            $this->slug = Str::slug($this->postTypeName);
         }
 
         // Register the post type.
-        add_action('init', array($this, 'registerPostType'));
+        add_action('init', [$this, 'registerPostType']);
     }
 
 
@@ -88,25 +90,28 @@ class CreatePostType extends Creator
         $singular = $this->singular;
         $slug = $this->slug;
 
-        $labels = array(
-            'name'               => __("{$plural}", TXTDMN),
-            'singular_name'      => __("{$singular}", TXTDMN),
-            'menu_name'          => __("{$plural}", TXTDMN),
-            'all_items'          => __("{$plural}", TXTDMN),
-            'add_new'            => __('Add New', TXTDMN),
-            'add_new_item'       => __("Add New {$singular}", TXTDMN),
-            'edit_item'          => __("Edit {$singular}", TXTDMN),
-            'new_item'           => __("New {$singular}", TXTDMN),
-            'view_item'          => __("View {$singular}", TXTDMN),
-            'search_items'       => __("Search {$plural}", TXTDMN),
-            'not_found'          => __("No {$plural} found", TXTDMN),
-            'not_found_in_trash' => __("No {$plural} found in Trash", TXTDMN),
-            'parent_item_colon'  => __("Parent {$singular}:", TXTDMN)
-        );
+        $labels = [
+
+            'name'               => __("{$plural}", 'type-creator'),
+            'singular_name'      => __("{$singular}", 'type-creator'),
+            'menu_name'          => __("{$plural}", 'type-creator'),
+            'all_items'          => __("{$plural}", 'type-creator'),
+            'add_new'            => __('Add New', 'type-creator'),
+            'add_new_item'       => __("Add New {$singular}", 'type-creator'),
+            'edit_item'          => __("Edit {$singular}", 'type-creator'),
+            'new_item'           => __("New {$singular}", 'type-creator'),
+            'view_item'          => __("View {$singular}", 'type-creator'),
+            'search_items'       => __("Search {$plural}", 'type-creator'),
+            'not_found'          => __("No {$plural} found", 'type-creator'),
+            'not_found_in_trash' => __("No {$plural} found in Trash", 'type-creator'),
+            'parent_item_colon'  => __("Parent {$singular}:", 'type-creator')
+
+        ];
 
         // default options
-        $defaults = array(
-            'label'               => __("{$plural}", TXTDMN),
+        $defaults = [
+
+            'label'               => __("{$plural}", 'type-creator'),
             'labels'              => $labels,
             'public'              => true,
             'exclude_from_search' => false,
@@ -119,24 +124,33 @@ class CreatePostType extends Creator
             'menu_icon'           => 'post',
             //'capability_type'     => 'post',
             'hierarchical'        => false,
-            'supports'            => array(
+
+            'supports'            => [
+
                 // 'author',
                 // 'editor',
                 // 'thumbnail',
                 // 'title'
-            ),
+
+            ],
+
             'has_archive' => true,
-            'rewrite'     => array(
+
+            'rewrite'     => [
+
                 'slug'       => $slug,
                 'with_front' => true,
                 'feeds'      => true,
                 'pages'      => true
-            ),
+
+            ],
+
             'query_var'  => $this->postTypeName,
             'can_export' => true
-        );
 
-        $options = optionsMerge($defaults, $this->options);
+        ];
+
+        $options = $this->optionsMerge($defaults, $this->options);
         $this->options = $options;
 
         // Check that the post type doesn't already exist.

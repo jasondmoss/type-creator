@@ -17,6 +17,11 @@ namespace TypeCreator;
  */
 
 
+/**
+ * \TypeCreator\Creator
+ *
+ * @abstract
+ */
 abstract class Creator
 {
 
@@ -90,7 +95,7 @@ abstract class Creator
      * @var string
      * @access protected
      */
-    private $menuIconName = array();
+    private $menuIconName = [];
 
     /**
      * Post icon array. Defines the icon font.
@@ -100,164 +105,165 @@ abstract class Creator
      *
      * @see http://melchoyce.github.io/dashicons/
      */
-    private $nativeIcons = array(
+    private $nativeIcons = [
 
         // Default Admin Menu
-        'admin-appearance' => array('iconfont' => 'content:"\f100"'),
-        'admin-collapse'   => array('iconfont' => 'content:"\f148"'),
-        'admin-comments'   => array('iconfont' => 'content:"\f101";margin-top:1px'),
-        'admin-dashboard'  => array('iconfont' => 'content:"\f226"'),
-        'admin-generic'    => array('iconfont' => 'content:"\f111"'),
-        'admin-links'      => array('iconfont' => 'content:"\f103"'),
-        'admin-media'      => array('iconfont' => 'content:"\f104"'),
-        'admin-page'       => array('iconfont' => 'content:"\f105"'),
-        'admin-plugins'    => array('iconfont' => 'content:"\f106"'),
-        'admin-post'       => array('iconfont' => 'content:"\f109"'),
-        'admin-settings'   => array('iconfont' => 'content:"\f108"'),
-        'admin-site'       => array('iconfont' => 'content:"\f112"'),
-        'admin-tools'      => array('iconfont' => 'content:"\f107"'),
-        'admin-users'      => array('iconfont' => 'content:"\f110"'),
-        'gauge'            => array('iconfont' => 'content:"\f226"'),
-        'menu'             => array('iconfont' => 'content:"\f333"'),
-        'site'             => array('iconfont' => 'content:"\f319"'),
+        'admin-appearance' => ['iconfont' => 'content:"\f100"'],
+        'admin-collapse'   => ['iconfont' => 'content:"\f148"'],
+        'admin-comments'   => ['iconfont' => 'content:"\f101";margin-top:1px'],
+        'admin-dashboard'  => ['iconfont' => 'content:"\f226"'],
+        'admin-generic'    => ['iconfont' => 'content:"\f111"'],
+        'admin-links'      => ['iconfont' => 'content:"\f103"'],
+        'admin-media'      => ['iconfont' => 'content:"\f104"'],
+        'admin-page'       => ['iconfont' => 'content:"\f105"'],
+        'admin-plugins'    => ['iconfont' => 'content:"\f106"'],
+        'admin-post'       => ['iconfont' => 'content:"\f109"'],
+        'admin-settings'   => ['iconfont' => 'content:"\f108"'],
+        'admin-site'       => ['iconfont' => 'content:"\f112"'],
+        'admin-tools'      => ['iconfont' => 'content:"\f107"'],
+        'admin-users'      => ['iconfont' => 'content:"\f110"'],
+        'gauge'            => ['iconfont' => 'content:"\f226"'],
+        'menu'             => ['iconfont' => 'content:"\f333"'],
+        'site'             => ['iconfont' => 'content:"\f319"'],
 
         // Custom Post Types
-        'align-center'            => array('iconfont' => 'content:"\f134"'),
-        'align-left'              => array('iconfont' => 'content:"\f135"'),
-        'align-none'              => array('iconfont' => 'content:"\f138"'),
-        'align-right'             => array('iconfont' => 'content:"\f136"'),
-        'analytics'               => array('iconfont' => 'content:"\f183"'),
-        'arr-alt1-down'           => array('iconfont' => 'content:"\f346"'),
-        'arr-alt1-left'           => array('iconfont' => 'content:"\f340"'),
-        'arr-alt1-right'          => array('iconfont' => 'content:"\f344"'),
-        'arr-alt1-up'             => array('iconfont' => 'content:"\f342"'),
-        'arr-alt2-down'           => array('iconfont' => 'content:"\f347"'),
-        'arr-alt2-left'           => array('iconfont' => 'content:"\f341"'),
-        'arr-alt2-right'          => array('iconfont' => 'content:"\f345"'),
-        'arr-alt2-up'             => array('iconfont' => 'content:"\f343"'),
-        'arr-down'                => array('iconfont' => 'content:"\f140"'),
-        'arr-left'                => array('iconfont' => 'content:"\f141"'),
-        'arr-right'               => array('iconfont' => 'content:"\f139"'),
-        'arr-up'                  => array('iconfont' => 'content:"\f142"'),
-        'arrow-down'              => array('iconfont' => 'content:"\f316"'),
-        'arrow-up'                => array('iconfont' => 'content:"\f317"'),
-        'awards'                  => array('iconfont' => 'content:"\f313"'),
-        'backup'                  => array('iconfont' => 'content:"\f321"'),
-        'bargraph'                => array('iconfont' => 'content:"\f185"'),
-        'bargraph2'               => array('iconfont' => 'content:"\f238"'),
-        'bargraph3'               => array('iconfont' => 'content:"\f239"'),
-        'book'                    => array('iconfont' => 'content:"\f330"'),
-        'book-alt'                => array('iconfont' => 'content:"\f331"'),
-        'businessman'             => array('iconfont' => 'content:"\f338"'),
-        'calendar'                => array('iconfont' => 'content:"\f145"'),
-        'camera2'                 => array('iconfont' => 'content:"\f306"'),
-        'cart'                    => array('iconfont' => 'content:"\f174"'),
-        'category'                => array('iconfont' => 'content:"\f318"'),
-        'cloud'                   => array('iconfont' => 'content:"\f176"'),
-        'designers'               => array('iconfont' => 'content:"\f309"'),
-        'developers'              => array('iconfont' => 'content:"\f308"'),
-        'download'                => array('iconfont' => 'content:"\f316";'),
-        'edit'                    => array('iconfont' => 'content:"\f327"'),
-        'editor-aligncenter'      => array('iconfont' => 'content:"\f207"'),
-        'editor-alignleft'        => array('iconfont' => 'content:"\f206"'),
-        'editor-alignright'       => array('iconfont' => 'content:"\f208"'),
-        'editor-bold'             => array('iconfont' => 'content:"\f200"'),
-        'editor-customchar'       => array('iconfont' => 'content:"\f220"'),
-        'editor-distractionfree'  => array('iconfont' => 'content:"\f211"'),
-        'editor-help'             => array('iconfont' => 'content:"\f223"'),
-        'editor-indent'           => array('iconfont' => 'content:"\f222"'),
-        'editor-insertmore'       => array('iconfont' => 'content:"\f209"'),
-        'editor-italic'           => array('iconfont' => 'content:"\f201"'),
-        'editor-justify'          => array('iconfont' => 'content:"\f214"'),
-        'editor-kitchensink'      => array('iconfont' => 'content:"\f212"'),
-        'editor-ol'               => array('iconfont' => 'content:"\f204"'),
-        'editor-outdent'          => array('iconfont' => 'content:"\f221"'),
-        'editor-plaintext'        => array('iconfont' => 'content:"\f217"'),
-        'editor-quote'            => array('iconfont' => 'content:"\f205"'),
-        'editor-removeformatting' => array('iconfont' => 'content:"\f218"'),
-        'editor-rtl'              => array('iconfont' => 'content:"\f320"'),
-        'editor-spellcheck'       => array('iconfont' => 'content:"\f210"'),
-        'editor-strikethrough'    => array('iconfont' => 'content:"\f224"'),
-        'editor-textcolor'        => array('iconfont' => 'content:"\f215"'),
-        'editor-ul'               => array('iconfont' => 'content:"\f203"'),
-        'editor-underline'        => array('iconfont' => 'content:"\f213"'),
-        'editor-unlink'           => array('iconfont' => 'content:"\f225"'),
-        'editor-video'            => array('iconfont' => 'content:"\f219"'),
-        'editor-word'             => array('iconfont' => 'content:"\f216"'),
-        'exerpt-view'             => array('iconfont' => 'content:"\f164"'),
-        'facebook1'               => array('iconfont' => 'content:"\f304"'),
-        'facebook2'               => array('iconfont' => 'content:"\f305"'),
-        'feedback'                => array('iconfont' => 'content:"\f175"'),
-        'flag'                    => array('iconfont' => 'content:"\f227"'),
-        'format-aside'            => array('iconfont' => 'content:"\f123"'),
-        'format-audio'            => array('iconfont' => 'content:"\f127"'),
-        'format-chat'             => array('iconfont' => 'content:"\f125"'),
-        'format-gallery'          => array('iconfont' => 'content:"\f161"'),
-        'format-image'            => array('iconfont' => 'content:"\f128"'),
-        'format-quote'            => array('iconfont' => 'content:"\f122"'),
-        'format-status'           => array('iconfont' => 'content:"\f130"'),
-        'format-video'            => array('iconfont' => 'content:"\f126"'),
-        'forms'                   => array('iconfont' => 'content:"\f314"'),
-        'groups'                  => array('iconfont' => 'content:"\f307"'),
-        'id'                      => array('iconfont' => 'content:"\f336"'),
-        'id-alt'                  => array('iconfont' => 'content:"\f337"'),
-        'images-alt1'             => array('iconfont' => 'content:"\f232"'),
-        'images-alt2'             => array('iconfont' => 'content:"\f233"'),
-        'imgedit-crop'            => array('iconfont' => 'content:"\f165"'),
-        'imgedit-fliph'           => array('iconfont' => 'content:"\f169"'),
-        'imgedit-flipv'           => array('iconfont' => 'content:"\f168"'),
-        'imgedit-redo'            => array('iconfont' => 'content:"\f172"'),
-        'imgedit-rleft'           => array('iconfont' => 'content:"\f166"'),
-        'imgedit-rright'          => array('iconfont' => 'content:"\f167"'),
-        'imgedit-undo'            => array('iconfont' => 'content:"\f171"'),
-        'info'                    => array('iconfont' => 'content:"\f348"'),
-        'leftright'               => array('iconfont' => 'content:"\f229"'),
-        'lightbulb'               => array('iconfont' => 'content:"\f339"'),
-        'list-view'               => array('iconfont' => 'content:"\f163"'),
-        'location'                => array('iconfont' => 'content:"\f230"'),
-        'location-alt'            => array('iconfont' => 'content:"\f231"'),
-        'lock'                    => array('iconfont' => 'content:"\f160"'),
-        'marker'                  => array('iconfont' => 'content:"\f159"'),
-        'migration'               => array('iconfont' => 'content:"\f310"'),
-        'network'                 => array('iconfont' => 'content:"\f325"'),
-        'no'                      => array('iconfont' => 'content:"\f158"'),
-        'no-alt'                  => array('iconfont' => 'content:"\f335"'),
-        'performance'             => array('iconfont' => 'content:"\f311"'),
-        'piechart'                => array('iconfont' => 'content:"\f184"'),
-        'plus-small'              => array('iconfont' => 'content:"\f132"'),
-        'portfolio'               => array('iconfont' => 'content:"\f322"'),
-        'post-status'             => array('iconfont' => 'content:"\f173"'),
-        'pressthis'               => array('iconfont' => 'content:"\f157"'),
-        'products'                => array('iconfont' => 'content:"\f312"'),
-        'rss'                     => array('iconfont' => 'content:"\f303"'),
-        'screenoptions'           => array('iconfont' => 'content:"\f180"'),
-        'search'                  => array('iconfont' => 'content:"\f179"'),
-        'share'                   => array('iconfont' => 'content:"\f237"'),
-        'share2'                  => array('iconfont' => 'content:"\f240"'),
-        'share3'                  => array('iconfont' => 'content:"\f242"'),
-        'shield'                  => array('iconfont' => 'content:"\f332"'),
-        'shield-alt'              => array('iconfont' => 'content:"\f334"'),
-        'slides'                  => array('iconfont' => 'content:"\f181"'),
-        'smiley'                  => array('iconfont' => 'content:"\f328"'),
-        'sort'                    => array('iconfont' => 'content:"\f156"'),
-        'star-empty'              => array('iconfont' => 'content:"\f154"'),
-        'star-filled'             => array('iconfont' => 'content:"\f155"'),
-        'tag'                     => array('iconfont' => 'content:"\f323"'),
-        'translation'             => array('iconfont' => 'content:"\f326"'),
-        'twitter1'                => array('iconfont' => 'content:"\f301"'),
-        'twitter2'                => array('iconfont' => 'content:"\f302"'),
-        'update'                  => array('iconfont' => 'content:"\f113"'),
-        'vault'                   => array('iconfont' => 'content:"\f178"'),
-        'view-site'               => array('iconfont' => 'content:"\f115"'),
-        'video-alt1'              => array('iconfont' => 'content:"\f234"'),
-        'video-alt2'              => array('iconfont' => 'content:"\f235"'),
-        'video-alt3'              => array('iconfont' => 'content:"\f236"'),
-        'visibility'              => array('iconfont' => 'content:"\f177"'),
-        'wordpress'               => array('iconfont' => 'content:"\f120"'),
-        'wordpress-single-ring'   => array('iconfont' => 'content:"\f324"'),
-        'xit'                     => array('iconfont' => 'content:"\f153"'),
-        'yes'                     => array('iconfont' => 'content:"\f147"')
-    );
+        'align-center'            => ['iconfont' => 'content:"\f134"'],
+        'align-left'              => ['iconfont' => 'content:"\f135"'],
+        'align-none'              => ['iconfont' => 'content:"\f138"'],
+        'align-right'             => ['iconfont' => 'content:"\f136"'],
+        'analytics'               => ['iconfont' => 'content:"\f183"'],
+        'arr-alt1-down'           => ['iconfont' => 'content:"\f346"'],
+        'arr-alt1-left'           => ['iconfont' => 'content:"\f340"'],
+        'arr-alt1-right'          => ['iconfont' => 'content:"\f344"'],
+        'arr-alt1-up'             => ['iconfont' => 'content:"\f342"'],
+        'arr-alt2-down'           => ['iconfont' => 'content:"\f347"'],
+        'arr-alt2-left'           => ['iconfont' => 'content:"\f341"'],
+        'arr-alt2-right'          => ['iconfont' => 'content:"\f345"'],
+        'arr-alt2-up'             => ['iconfont' => 'content:"\f343"'],
+        'arr-down'                => ['iconfont' => 'content:"\f140"'],
+        'arr-left'                => ['iconfont' => 'content:"\f141"'],
+        'arr-right'               => ['iconfont' => 'content:"\f139"'],
+        'arr-up'                  => ['iconfont' => 'content:"\f142"'],
+        'arrow-down'              => ['iconfont' => 'content:"\f316"'],
+        'arrow-up'                => ['iconfont' => 'content:"\f317"'],
+        'awards'                  => ['iconfont' => 'content:"\f313"'],
+        'backup'                  => ['iconfont' => 'content:"\f321"'],
+        'bargraph'                => ['iconfont' => 'content:"\f185"'],
+        'bargraph2'               => ['iconfont' => 'content:"\f238"'],
+        'bargraph3'               => ['iconfont' => 'content:"\f239"'],
+        'book'                    => ['iconfont' => 'content:"\f330"'],
+        'book-alt'                => ['iconfont' => 'content:"\f331"'],
+        'businessman'             => ['iconfont' => 'content:"\f338"'],
+        'calendar'                => ['iconfont' => 'content:"\f145"'],
+        'camera2'                 => ['iconfont' => 'content:"\f306"'],
+        'cart'                    => ['iconfont' => 'content:"\f174"'],
+        'category'                => ['iconfont' => 'content:"\f318"'],
+        'cloud'                   => ['iconfont' => 'content:"\f176"'],
+        'designers'               => ['iconfont' => 'content:"\f309"'],
+        'developers'              => ['iconfont' => 'content:"\f308"'],
+        'download'                => ['iconfont' => 'content:"\f316"'],
+        'edit'                    => ['iconfont' => 'content:"\f327"'],
+        'editor-aligncenter'      => ['iconfont' => 'content:"\f207"'],
+        'editor-alignleft'        => ['iconfont' => 'content:"\f206"'],
+        'editor-alignright'       => ['iconfont' => 'content:"\f208"'],
+        'editor-bold'             => ['iconfont' => 'content:"\f200"'],
+        'editor-customchar'       => ['iconfont' => 'content:"\f220"'],
+        'editor-distractionfree'  => ['iconfont' => 'content:"\f211"'],
+        'editor-help'             => ['iconfont' => 'content:"\f223"'],
+        'editor-indent'           => ['iconfont' => 'content:"\f222"'],
+        'editor-insertmore'       => ['iconfont' => 'content:"\f209"'],
+        'editor-italic'           => ['iconfont' => 'content:"\f201"'],
+        'editor-justify'          => ['iconfont' => 'content:"\f214"'],
+        'editor-kitchensink'      => ['iconfont' => 'content:"\f212"'],
+        'editor-ol'               => ['iconfont' => 'content:"\f204"'],
+        'editor-outdent'          => ['iconfont' => 'content:"\f221"'],
+        'editor-plaintext'        => ['iconfont' => 'content:"\f217"'],
+        'editor-quote'            => ['iconfont' => 'content:"\f205"'],
+        'editor-removeformatting' => ['iconfont' => 'content:"\f218"'],
+        'editor-rtl'              => ['iconfont' => 'content:"\f320"'],
+        'editor-spellcheck'       => ['iconfont' => 'content:"\f210"'],
+        'editor-strikethrough'    => ['iconfont' => 'content:"\f224"'],
+        'editor-textcolor'        => ['iconfont' => 'content:"\f215"'],
+        'editor-ul'               => ['iconfont' => 'content:"\f203"'],
+        'editor-underline'        => ['iconfont' => 'content:"\f213"'],
+        'editor-unlink'           => ['iconfont' => 'content:"\f225"'],
+        'editor-video'            => ['iconfont' => 'content:"\f219"'],
+        'editor-word'             => ['iconfont' => 'content:"\f216"'],
+        'exerpt-view'             => ['iconfont' => 'content:"\f164"'],
+        'facebook1'               => ['iconfont' => 'content:"\f304"'],
+        'facebook2'               => ['iconfont' => 'content:"\f305"'],
+        'feedback'                => ['iconfont' => 'content:"\f175"'],
+        'flag'                    => ['iconfont' => 'content:"\f227"'],
+        'format-aside'            => ['iconfont' => 'content:"\f123"'],
+        'format-audio'            => ['iconfont' => 'content:"\f127"'],
+        'format-chat'             => ['iconfont' => 'content:"\f125"'],
+        'format-gallery'          => ['iconfont' => 'content:"\f161"'],
+        'format-image'            => ['iconfont' => 'content:"\f128"'],
+        'format-quote'            => ['iconfont' => 'content:"\f122"'],
+        'format-status'           => ['iconfont' => 'content:"\f130"'],
+        'format-video'            => ['iconfont' => 'content:"\f126"'],
+        'forms'                   => ['iconfont' => 'content:"\f314"'],
+        'groups'                  => ['iconfont' => 'content:"\f307"'],
+        'id'                      => ['iconfont' => 'content:"\f336"'],
+        'id-alt'                  => ['iconfont' => 'content:"\f337"'],
+        'images-alt1'             => ['iconfont' => 'content:"\f232"'],
+        'images-alt2'             => ['iconfont' => 'content:"\f233"'],
+        'imgedit-crop'            => ['iconfont' => 'content:"\f165"'],
+        'imgedit-fliph'           => ['iconfont' => 'content:"\f169"'],
+        'imgedit-flipv'           => ['iconfont' => 'content:"\f168"'],
+        'imgedit-redo'            => ['iconfont' => 'content:"\f172"'],
+        'imgedit-rleft'           => ['iconfont' => 'content:"\f166"'],
+        'imgedit-rright'          => ['iconfont' => 'content:"\f167"'],
+        'imgedit-undo'            => ['iconfont' => 'content:"\f171"'],
+        'info'                    => ['iconfont' => 'content:"\f348"'],
+        'leftright'               => ['iconfont' => 'content:"\f229"'],
+        'lightbulb'               => ['iconfont' => 'content:"\f339"'],
+        'list-view'               => ['iconfont' => 'content:"\f163"'],
+        'location'                => ['iconfont' => 'content:"\f230"'],
+        'location-alt'            => ['iconfont' => 'content:"\f231"'],
+        'lock'                    => ['iconfont' => 'content:"\f160"'],
+        'marker'                  => ['iconfont' => 'content:"\f159"'],
+        'migration'               => ['iconfont' => 'content:"\f310"'],
+        'network'                 => ['iconfont' => 'content:"\f325"'],
+        'no'                      => ['iconfont' => 'content:"\f158"'],
+        'no-alt'                  => ['iconfont' => 'content:"\f335"'],
+        'performance'             => ['iconfont' => 'content:"\f311"'],
+        'piechart'                => ['iconfont' => 'content:"\f184"'],
+        'plus-small'              => ['iconfont' => 'content:"\f132"'],
+        'portfolio'               => ['iconfont' => 'content:"\f322"'],
+        'post-status'             => ['iconfont' => 'content:"\f173"'],
+        'pressthis'               => ['iconfont' => 'content:"\f157"'],
+        'products'                => ['iconfont' => 'content:"\f312"'],
+        'rss'                     => ['iconfont' => 'content:"\f303"'],
+        'screenoptions'           => ['iconfont' => 'content:"\f180"'],
+        'search'                  => ['iconfont' => 'content:"\f179"'],
+        'share'                   => ['iconfont' => 'content:"\f237"'],
+        'share2'                  => ['iconfont' => 'content:"\f240"'],
+        'share3'                  => ['iconfont' => 'content:"\f242"'],
+        'shield'                  => ['iconfont' => 'content:"\f332"'],
+        'shield-alt'              => ['iconfont' => 'content:"\f334"'],
+        'slides'                  => ['iconfont' => 'content:"\f181"'],
+        'smiley'                  => ['iconfont' => 'content:"\f328"'],
+        'sort'                    => ['iconfont' => 'content:"\f156"'],
+        'star-empty'              => ['iconfont' => 'content:"\f154"'],
+        'star-filled'             => ['iconfont' => 'content:"\f155"'],
+        'tag'                     => ['iconfont' => 'content:"\f323"'],
+        'translation'             => ['iconfont' => 'content:"\f326"'],
+        'twitter1'                => ['iconfont' => 'content:"\f301"'],
+        'twitter2'                => ['iconfont' => 'content:"\f302"'],
+        'update'                  => ['iconfont' => 'content:"\f113"'],
+        'vault'                   => ['iconfont' => 'content:"\f178"'],
+        'view-site'               => ['iconfont' => 'content:"\f115"'],
+        'video-alt1'              => ['iconfont' => 'content:"\f234"'],
+        'video-alt2'              => ['iconfont' => 'content:"\f235"'],
+        'video-alt3'              => ['iconfont' => 'content:"\f236"'],
+        'visibility'              => ['iconfont' => 'content:"\f177"'],
+        'wordpress'               => ['iconfont' => 'content:"\f120"'],
+        'wordpress-single-ring'   => ['iconfont' => 'content:"\f324"'],
+        'xit'                     => ['iconfont' => 'content:"\f153"'],
+        'yes'                     => ['iconfont' => 'content:"\f147"']
+
+    ];
 
 
     /* ---------------------------------------*/
@@ -281,10 +287,10 @@ abstract class Creator
              */
 
             // Default columns.
-            $columns = array(
+            $columns = [
                 'cb'    => '<input type="checkbox">',
-                'title' => __('Title', TXTDMN)
-            );
+                'title' => __('Title', 'type-creator')
+            ];
 
             // If there are taxonomies registered to the post type.
             if (is_array($this->taxonomies)) {
@@ -292,17 +298,17 @@ abstract class Creator
                 // Create a column for each taxonomy.
                 foreach ($this->taxonomies as $tax) {
                     $taxObject = get_taxonomy($tax);
-                    $columns[$tax] = __($taxObject->labels->name, TXTDMN);
+                    $columns[$tax] = __($taxObject->labels->name, 'type-creator');
                 }
             }
 
             // If post type supports comments.
             if (post_type_supports($this->postTypeName, 'comments')) {
-                $columns['comments'] = '<img alt="'. __('Comments', TXTDMN) .'" src="'
+                $columns['comments'] = '<img alt="'. __('Comments', 'type-creator') .'" src="'
                     .admin_url('/images/comment-grey-bubble.png') .'">';
             }
 
-            $columns['date'] = __('Date', TXTDMN);
+            $columns['date'] = __('Date', 'type-creator');
         } else {
             $columns = $this->columns;
         }
@@ -328,18 +334,20 @@ abstract class Creator
             case (taxonomy_exists($column)):
                 $terms = get_the_terms($postId, $column);
                 if (! empty($terms)) {
-                    $output = array();
+                    $output = [];
 
                     foreach ($terms as $term) {
                         $output[] = sprintf(
                             '<a href="%s">%s</a>',
-                            esc_url(add_query_arg(
-                                array(
-                                    'post_type' => $post->post_type,
-                                    $column     => $term->slug
-                                ),
-                                'edit.php'
-                            )),
+                            esc_url(
+                                add_query_arg(
+                                    [
+                                        'post_type' => $post->post_type,
+                                        $column     => $term->slug
+                                    ],
+                                    'edit.php'
+                                )
+                            ),
                             esc_html(sanitize_term_field('name', $term->name, $term->term_id, $column, 'display'))
                         );
                     }
@@ -348,7 +356,7 @@ abstract class Creator
                     echo join(', ', $output);
                 } else {
                     $taxObject = get_taxonomy($column);
-                    _e('No '. $taxObject->labels->name, TXTDMN);
+                    _e('No '. $taxObject->labels->name, 'type-creator');
                 }
                 break;
 
@@ -363,17 +371,19 @@ abstract class Creator
                 break;
 
             case 'icon':
-                $link = esc_url(add_query_arg(
-                    array(
-                        'post'   => $post->ID,
-                        'action' => 'edit'
-                    ),
-                    'post.php'
-                ));
+                $link = esc_url(
+                    add_query_arg(
+                        [
+                            'post'   => $post->ID,
+                            'action' => 'edit'
+                        ],
+                        'post.php'
+                    )
+                );
 
                 if (has_post_thumbnail()) {
                     echo '<a href="'. $link .'">';
-                    the_post_thumbnail(array(60, 60));
+                    the_post_thumbnail([60, 60]);
                     echo '</a>';
                 } else {
                     echo '<a href="'. $link .'"><img src="'. site_url('/wp-includes/images/crystal/default.png')
@@ -400,7 +410,7 @@ abstract class Creator
      * @return void
      * @access public
      */
-    public function columns($columns = array())
+    public function columns($columns = [])
     {
         if (isset($columns)) {
             $this->columns = $columns;
@@ -431,15 +441,15 @@ abstract class Creator
      * @return void
      * @access private
      */
-    private function sortable($columns = array())
+    private function sortable($columns = [])
     {
         $this->sortable = $columns;
 
         // Run filter to make columns sortable.
-        add_filter("manage_edit-{$this->postTypeName}_sortable_columns", array($this, 'makeColumnsSortable'));
+        add_filter("manage_edit-{$this->postTypeName}_sortable_columns", [$this, 'makeColumnsSortable']);
 
         // Run action that sorts columns on request.
-        add_action('load-edit.php', array($this, 'loadEdit'));
+        add_action('load-edit.php', [$this, 'loadEdit']);
     }
 
 
@@ -452,7 +462,7 @@ abstract class Creator
      * @return array
      * @access public
      */
-    public function makeColumnsSortable($columns = array())
+    public function makeColumnsSortable($columns = [])
     {
         // For each sortable column.
         foreach ($this->sortable as $column => $values) {
@@ -475,7 +485,7 @@ abstract class Creator
     public function loadEdit()
     {
         // Run filter to sort columns when requested.
-        add_filter('request', array($this, 'sortColumns'));
+        add_filter('request', [$this, 'sortColumns']);
     }
 
 
@@ -487,7 +497,7 @@ abstract class Creator
      * @return array
      * @access public
      */
-    public function sortColumns($vars = array())
+    public function sortColumns($vars = [])
     {
         // Cycle through all sortable columns submitted by the user.
         foreach ($this->sortable as $column => $values) {
@@ -510,10 +520,10 @@ abstract class Creator
                 if (isset($vars['orderby']) && $metaKey == $vars['orderby']) {
                     $vars = array_merge(
                         $vars,
-                        array(
+                        [
                             'meta_key' => $metaKey,
                             'orderby'  => $orderby
-                        )
+                        ]
                     );
                 }
             }
@@ -545,10 +555,10 @@ abstract class Creator
 
             foreach ($filters as $taxSlug) {
                 $tax = get_taxonomy($taxSlug);
-                $args = array(
+                $args = [
                     'orderby'    => 'name',
                     'hide_empty' => false
-                );
+                ];
 
                 $terms = get_terms($taxSlug, $args);
                 if ($terms) {
@@ -602,7 +612,7 @@ abstract class Creator
             $this->menuIconName = $icon;
         }
 
-        add_action('admin_head', array($this, 'setPostIcon'));
+        add_action('admin_head', [$this, 'setPostIcon']);
     }
 
 
@@ -618,6 +628,35 @@ abstract class Creator
             .'.menu-icon-'. $this->postTypeName .' div.wp-menu-image:before{'. $this->menuIconName['iconfont']
             .'}.icon16.icon-'. $this->postTypeName .',.menu-icon-'. $this->postTypeName
             ." div.wp-menu-image{background-image:none!important;}</style>\n";
+    }
+
+
+    /**
+     * Merges user submitted options array with default settings, preserving default data if not included in
+     * user options.
+     *
+     * @param array $defaults The default option array.
+     * @param array $options  User submitted options to add/override defaults.
+     *
+     * @return array
+     * @access protected
+     */
+    protected function optionsMerge($defaults, $options)
+    {
+        $newArray = $defaults;
+        foreach ($options as $key => $value) {
+            if (isset($defaults[$key])) {
+                if (is_array($defaults[$key])) {
+                    $newArray[$key] = self::optionsMerge($defaults[$key], $options[$key]);
+                } else {
+                    $newArray[$key] = $options[$key];
+                }
+            } else {
+                $newArray[$key] = $value;
+            }
+        }
+
+        return $newArray;
     }
 }
 
