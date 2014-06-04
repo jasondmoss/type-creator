@@ -48,7 +48,7 @@ class CreatePostType extends Creator
                 'slug'
             ];
 
-            $this->postTypeName = $typeNames['post_type_name'];
+            $this->postTypeName = $typeNames['handle'];
 
             // Cycle through possible names.
             foreach ($names as $name) {
