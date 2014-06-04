@@ -18,7 +18,6 @@ namespace TypeCreator;
 
 
 use \TypeCreator\Creator;
-use \TypeCreator\Helper;
 use \Illuminate\Support\Str;
 
 /**

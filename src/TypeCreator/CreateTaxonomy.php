@@ -18,7 +18,6 @@ namespace TypeCreator;
 
 
 use \TypeCreator\Creator;
-use \TypeCreator\Helper;
 use \Illuminate\Support\Str;
 
 /**
@@ -142,7 +141,7 @@ class CreateTaxonomy extends Creator
         ];
 
         // Merge defined custom options with the default options.
-        $options = Helper::optionsMerge($defaults, $this->options);
+        $options = $this->optionsMerge($defaults, $this->options);
 
         // Register the taxonomy if it does not yet exist.
         if (! taxonomy_exists($txName)) {
