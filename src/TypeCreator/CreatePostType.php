@@ -36,18 +36,18 @@ class CreatePostType extends Creator
      * @return void
      * @access public
      */
-    public function __construct($typeNames, $options = [])
+    public function __construct($handle, $typeNames, $options = [])
     {
         $this->options = $options;
 
         if (is_array($typeNames)) {
             $names = [
-                'singular',
                 'plural',
+                'singular',
                 'slug'
             ];
 
-            $this->postTypeName = $typeNames['handle'];
+            $this->postTypeName = $handle;
 
             // Cycle through possible names.
             foreach ($names as $name) {
@@ -61,7 +61,7 @@ class CreatePostType extends Creator
                 }
             }
         } else {
-            $this->postTypeName = $typeNames;
+            $this->postTypeName = $handle;
             $this->plural = Str::plural($this->postTypeName);
             $this->singular = Str::singular($this->postTypeName);
             $this->slug = Str::slug($this->postTypeName);
@@ -72,7 +72,7 @@ class CreatePostType extends Creator
     }
 
 
-    /* ---------------------------------------*/
+    /* ---------------------------------------------------------------------- */
 
 
     /**
@@ -85,32 +85,28 @@ class CreatePostType extends Creator
      */
     public function registerPostType()
     {
-        $plural = $this->plural;
-        $singular = $this->singular;
-        $slug = $this->slug;
-
         $labels = [
 
-            'name'               => __("{$plural}", 'type-creator'),
-            'singular_name'      => __("{$singular}", 'type-creator'),
-            'menu_name'          => __("{$plural}", 'type-creator'),
-            'all_items'          => __("{$plural}", 'type-creator'),
+            'name'               => __("{$this->plural}", 'type-creator'),
+            'singular_name'      => __("{$this->singular}", 'type-creator'),
+            'menu_name'          => __("{$this->plural}", 'type-creator'),
+            'all_items'          => __("{$this->plural}", 'type-creator'),
             'add_new'            => __('Add New', 'type-creator'),
-            'add_new_item'       => __("Add New {$singular}", 'type-creator'),
-            'edit_item'          => __("Edit {$singular}", 'type-creator'),
-            'new_item'           => __("New {$singular}", 'type-creator'),
-            'view_item'          => __("View {$singular}", 'type-creator'),
-            'search_items'       => __("Search {$plural}", 'type-creator'),
-            'not_found'          => __("No {$plural} found", 'type-creator'),
-            'not_found_in_trash' => __("No {$plural} found in Trash", 'type-creator'),
-            'parent_item_colon'  => __("Parent {$singular}:", 'type-creator')
+            'add_new_item'       => __("Add New {$this->singular}", 'type-creator'),
+            'edit_item'          => __("Edit {$this->singular}", 'type-creator'),
+            'new_item'           => __("New {$this->singular}", 'type-creator'),
+            'view_item'          => __("View {$this->singular}", 'type-creator'),
+            'search_items'       => __("Search {$this->plural}", 'type-creator'),
+            'not_found'          => __("No {$this->plural} found", 'type-creator'),
+            'not_found_in_trash' => __("No {$this->plural} found in Trash", 'type-creator'),
+            'parent_item_colon'  => __("Parent {$this->singular}:", 'type-creator')
 
         ];
 
-        // default options
+        // Default options.
         $defaults = [
 
-            'label'               => __("{$plural}", 'type-creator'),
+            'label'               => __("{$this->plural}", 'type-creator'),
             'labels'              => $labels,
             'public'              => true,
             'exclude_from_search' => false,
@@ -121,15 +117,15 @@ class CreatePostType extends Creator
             'show_in_admin_bar'   => true,
             'menu_position'       => 5,
             'menu_icon'           => 'post',
-            //'capability_type'     => 'post',
+            'capability_type'     => 'post',
             'hierarchical'        => false,
 
             'supports'            => [
 
-                // 'author',
-                // 'editor',
-                // 'thumbnail',
-                // 'title'
+                'editor',
+                'revisions',
+                'thumbnail',
+                'title'
 
             ],
 
@@ -137,7 +133,7 @@ class CreatePostType extends Creator
 
             'rewrite'     => [
 
-                'slug'       => $slug,
+                'slug'       => $this->slug,
                 'with_front' => true,
                 'feeds'      => true,
                 'pages'      => true
