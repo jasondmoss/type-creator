@@ -14,12 +14,12 @@
         {
             "name": "Jason D. Moss",
             "email": "jason@jdmlabs.com",
-            "homepage": "http://www.jdmlabs.com/",
+            "homepage": "https://www.jdmlabs.com/",
             "role": "Developer"
         }
     ],
     "support": {
-        "email": "jason.moss@verbinteractive.com",
+        "email": "jason@jdmlabs.com",
         "issues": "https://github.com/jasondmoss/type-creator/issues",
         "wiki": "https://github.com/jasondmoss/type-creator/wiki",
         "source": "https://github.com/jasondmoss/type-creator"
